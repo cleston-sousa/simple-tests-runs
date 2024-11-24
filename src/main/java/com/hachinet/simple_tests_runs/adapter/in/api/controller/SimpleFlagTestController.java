@@ -1,6 +1,7 @@
 package com.hachinet.simple_tests_runs.adapter.in.api.controller;
 
 import com.hachinet.simple_tests_runs.adapter.in.api.controller.response.ListaFlagResponse;
+import com.hachinet.simple_tests_runs.adapter.out.properties.ComplexMapProperties;
 import com.hachinet.simple_tests_runs.infra.utils.MapUtils;
 import dev.openfeature.sdk.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class SimpleFlagTestController {
     public SimpleFlagTestController(OpenFeatureAPI OFApi) {
         this.openFeatureAPI = OFApi;
     }
+
+    @Autowired
+    private ComplexMapProperties complexMapProperties;
 
     @GetMapping("/listar/{valorTeste}")
     public ResponseEntity<?> listarFlagsTeste(
@@ -55,15 +59,23 @@ public class SimpleFlagTestController {
 
         response.setMensagem(response.getMensagem() +" : "+ client.getStringValue("mensagem-ativada", "Mensagem Padrao"));
 
-        Structure defaultObject = Structure.mapToStructure(new HashMap<>());
+        Map<String, Object> defaultMap = new HashMap<>();
+
+        defaultMap.put("lista", complexMapProperties.getLista());
+
+        Structure defaultObject = Structure.mapToStructure(defaultMap);
 
         Map<String, Object> mapTest = client.getObjectValue("basic-object", new Value(defaultObject)).asStructure().asObjectMap();
 
         List<Map<String, Object>> listaDeMaps = (List<Map<String, Object>>) MapUtils.pathValue("lista", mapTest);
 
+//        List<Map<String, String>> listaDeMapsProp = complexMapProperties.getLista();
+
         String todasOrigens = listaDeMaps.stream().map(maps -> maps.get("origem").toString()).collect(Collectors.joining(", "));
 
-        response.setMensagem(response.getMensagem() +" : "+ todasOrigens);
+//        String todasOrigensProp = listaDeMapsProp.stream().map(maps -> maps.get("origem").toString()).collect(Collectors.joining(", "));
+
+        response.setMensagem(response.getMensagem() + " : " + todasOrigens); //  + " : " + todasOrigensProp
 
         return ResponseEntity.ok(response);
     }

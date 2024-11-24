@@ -1,14 +1,19 @@
-# referencias
+# Referencias - Feature Flag
 
-https://openfeature.dev/
-https://github.com/open-feature/
+OpenFeature
+- https://openfeature.dev/
+- https://github.com/open-feature/
 
-https://openfeature.dev/docs/reference/technologies/server/java
-https://github.com/open-feature/java-sdk
+Java SDK
+- https://openfeature.dev/docs/reference/technologies/server/java
+- https://github.com/open-feature/java-sdk
 
-https://flagd.dev
-https://github.com/open-feature/flagd/
+Flagd
+- https://flagd.dev
+- https://github.com/open-feature/flagd/
 
-https://jsonlogic.com/
+Json Logic
+- https://jsonlogic.com/
 
-
+Properties
+- https://www.baeldung.com/configuration-properties-in-spring-boot
