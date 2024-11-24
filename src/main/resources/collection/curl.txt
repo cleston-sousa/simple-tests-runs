@@ -1,0 +1,1 @@
+curl --request GET --url 'http://localhost:8080/flag/listar/111111?cpf=4444442&nome=tchatchatcha'

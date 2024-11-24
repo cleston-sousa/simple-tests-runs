@@ -1,0 +1,76 @@
+{
+  "flags": {
+    "passa-fluxo": {
+      "state": "ENABLED",
+      "defaultVariant": "on",
+      "variants": {
+        "on": true,
+        "off": false
+      }
+    },
+    "passa-fluxo-complexo": {
+      "state": "ENABLED",
+      "defaultVariant": "off",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "targeting": {
+        "if": [
+          {"or" : [ 
+            {"==": [{"var": "cpf"},"444444"]}, 
+            {"and" : [ 
+              {"==": [{"var": "cnpj"},"111111"]}, 
+              {"==": [{"var": "nome"},"tchatchatcha"]}
+              ]} 
+            ]},
+          "on",
+          "off"
+        ]
+      }
+    },
+    "mensagem-ativada": {
+      "state": "ENABLED",
+      "defaultVariant": "XYZ002",
+      "variants": {
+        "XYZ001": "BATATA",
+        "XYZ002": "ABACATE",
+        "XYZ007": "UVA",
+        "XYZ010": "NADA"
+      }
+    },
+    "basic-object": {
+      "state": "ENABLED",
+      "defaultVariant": "cenario_2",
+      "variants": {
+        "cenario_1": {
+          "lista": []
+        },
+        "cenario_2": {
+          "lista": [
+            {
+              "origem": "micro-service-one",
+              "recurso": "/sushi"
+            }
+          ]
+        },
+        "cenario_3": {
+          "lista": [
+            {
+              "origem": "micro-service-one",
+              "recurso": "/sushi"
+            },
+            {
+              "origem": "micro-service-two",
+              "recurso": "/tempura"
+            },
+            {
+              "origem": "micro-service-five",
+              "recurso": "/wasabi"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
