@@ -1,5 +1,14 @@
 {
   "flags": {
+    "ms-basico-via-flag": {
+      "state": "ENABLED",
+      "defaultVariant": "opcao2",
+      "variants": {
+        "opcao1": "https://dog.com",
+        "opcao2": "https://dog.ceo",
+        "opcao3": "https://dog.dev"
+      }
+    },
     "passa-fluxo": {
       "state": "ENABLED",
       "defaultVariant": "on",
